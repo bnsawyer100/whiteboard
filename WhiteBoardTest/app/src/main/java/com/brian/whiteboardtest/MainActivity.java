@@ -16,25 +16,35 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        addListeners();
-
         setContentView(R.layout.activity_main);
+        addListeners();
     }
 
 
     public void addListeners() {
 
-        Button button = (Button) findViewById(R.id.button1);
-
         whiteBoardCurrent = (WhiteBoardView) findViewById(R.id.customwhiteboard1);
-        button.setOnClickListener(new View.OnClickListener() {
 
+
+        Button button1 = (Button) findViewById(R.id.button1);
+        button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
 
             }
-
         });
+
+
+        Button color1 = (Button) findViewById(R.id.color1);
+        color1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+
+                whiteBoardCurrent.setPenColor(0xFF0000);
+
+            }
+        });
+
 
     }
 
