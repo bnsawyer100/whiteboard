@@ -1,7 +1,7 @@
 package com.brian.whiteboardtest;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,6 +31,39 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View arg0) {
 
+                whiteBoardCurrent.undo();
+
+            }
+        });
+
+        Button button2 = (Button) findViewById(R.id.button2);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+
+                whiteBoardCurrent.redo();
+
+            }
+        });
+
+        Button button3 = (Button) findViewById(R.id.button3);
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+
+                whiteBoardCurrent.captureAndSend();
+              
+
+            }
+        });
+
+        Button button4 = (Button) findViewById(R.id.button4);
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+
+                whiteBoardCurrent.erase();
+
             }
         });
 
@@ -39,8 +72,73 @@ public class MainActivity extends ActionBarActivity {
         color1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
+//black, dark gray, light gray, blue, red, green, orange, yellow
+                whiteBoardCurrent.setPenColor(0x000000);
 
+            }
+        });
+
+        final Button color2 = (Button) findViewById(R.id.color2);
+        color2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                whiteBoardCurrent.setPenColor(0x333333);
+
+            }
+        });
+        Button color3 = (Button) findViewById(R.id.color3);
+        color3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                whiteBoardCurrent.setPenColor(0x666666);
+
+            }
+        });
+        Button color4 = (Button) findViewById(R.id.color4);
+        color4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                whiteBoardCurrent.setPenColor(0x0000FF);
+
+            }
+        });
+        Button color5 = (Button) findViewById(R.id.color5);
+        color5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
                 whiteBoardCurrent.setPenColor(0xFF0000);
+
+            }
+        });
+        Button color6 = (Button) findViewById(R.id.color6);
+        color6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                whiteBoardCurrent.setPenColor(0x00FF00);
+
+            }
+        });
+        Button color7 = (Button) findViewById(R.id.color7);
+        color7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                whiteBoardCurrent.setPenColor(0xDDAA00);
+
+            }
+        });
+        Button color8 = (Button) findViewById(R.id.color8);
+        color8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                whiteBoardCurrent.setPenColor(0xFFFF00);
+
+            }
+        });
+        Button color9 = (Button) findViewById(R.id.color9);
+        color9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                whiteBoardCurrent.setPenColor(0xFFFFFF);
 
             }
         });

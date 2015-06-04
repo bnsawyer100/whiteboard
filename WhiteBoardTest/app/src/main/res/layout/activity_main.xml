@@ -43,14 +43,14 @@
                 android:id="@+id/button3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Camture and email" />
+                android:text="Capture and email" />
 
 
             <Button
-                android:id="@+id/button3a"
+                android:id="@+id/button4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Clear" />
+                android:text="Erase" />
 
 
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -63,19 +63,19 @@
                     android:id="@+id/color1"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:background="#FF0000" />
+                    android:background="#000000" />
 
                 <Button
                     android:id="@+id/color2"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:background="#FFFF00" />
+                    android:background="#333333" />
 
                 <Button
                     android:id="@+id/color3"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:background="#00FFFF" />
+                    android:background="#666666" />
 
             </LinearLayout>
 
@@ -90,19 +90,19 @@
                     android:id="@+id/color4"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:background="#FF0000" />
+                    android:background="#0000FF" />
 
                 <Button
                     android:id="@+id/color5"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:background="#FFFF00" />
+                    android:background="#FF0000" />
 
                 <Button
                     android:id="@+id/color6"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:background="#00FFFF" />
+                    android:background="#00FF00" />
 
             </LinearLayout>
 
@@ -117,7 +117,7 @@
                     android:id="@+id/color7"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:background="#FF0000" />
+                    android:background="#DDAA00" />
 
                 <Button
                     android:id="@+id/color8"
@@ -129,7 +129,7 @@
                     android:id="@+id/color9"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:background="#00FFFF" />
+                    android:background="#FFFFFF" />
 
             </LinearLayout>
 
