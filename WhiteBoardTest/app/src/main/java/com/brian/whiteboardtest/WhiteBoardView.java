@@ -14,14 +14,20 @@ import android.view.View;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.Stack;
+import java.util.ArrayList;
 
 public class WhiteBoardView extends View implements View.OnTouchListener {
 
-    protected Path latestPath = null;
-    protected Stack<Path> paths = new Stack<Path>();
+    private Pathpart latestPath = null;
+    private ArrayList<Pathpart> paths = new ArrayList<Pathpart>();
     private Paint currentPaint = new Paint();
     private boolean penDown = false;
+    private int currentIndex = 0;
+
+    public class Pathpart {
+        private Path thepath;
+        private Paint thepaint;
+    }
 
     public WhiteBoardView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -32,27 +38,40 @@ public class WhiteBoardView extends View implements View.OnTouchListener {
         currentPaint.setStrokeWidth(20);
         currentPaint.setStyle(Paint.Style.STROKE);
         currentPaint.setStrokeJoin(Paint.Join.ROUND);
+
+
         setDrawingCacheEnabled(true);
 
     }
 
 
+
     @Override
     public void onDraw(Canvas canvas) {
-        if (latestPath!=null) canvas.drawPath(latestPath, currentPaint);
-        for (Path path : paths) {
-            canvas.drawPath(path, currentPaint);
-        }
+
+        if (paths.size()>0)
+             for (int i=0; i<currentIndex;++i) {
+                canvas.drawPath(paths.get(i).thepath, paths.get(i).thepaint);
+            }
 
     }
 
     public boolean onTouch(View view, MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                if (latestPath!=null)  paths.push(latestPath);
+
                 penDown = true;
-                latestPath = new Path();
-                latestPath.moveTo(event.getX(), event.getY());
+                latestPath = new Pathpart();
+                latestPath.thepath = new Path();
+                latestPath.thepaint= currentPaint;
+                int size = paths.size();
+                if (size>currentIndex) {
+                    for (int i1=currentIndex;i1<size;++i1)
+                         paths.remove(paths.size() - 1);
+                }
+                paths.add(latestPath);
+                ++currentIndex;
+                latestPath.thepath.moveTo(event.getX(), event.getY());
                 break;
             case MotionEvent.ACTION_UP:
                /* if (penDown) {
@@ -63,7 +82,7 @@ public class WhiteBoardView extends View implements View.OnTouchListener {
 */
                 break;
             case MotionEvent.ACTION_MOVE:
-               if (penDown) latestPath.lineTo(event.getX(), event.getY());
+               if (penDown) latestPath.thepath.lineTo(event.getX(), event.getY());
                break;
 
             default:
@@ -77,6 +96,11 @@ public class WhiteBoardView extends View implements View.OnTouchListener {
 
 
     public void  setPenColor (int cl) {
+
+        currentPaint = new Paint();
+        currentPaint.setStrokeWidth(20);
+        currentPaint.setStyle(Paint.Style.STROKE);
+        currentPaint.setStrokeJoin(Paint.Join.ROUND);
         currentPaint.setColor(cl);
     }
 
@@ -84,44 +108,32 @@ public class WhiteBoardView extends View implements View.OnTouchListener {
 
     public void erase()
     {
-        if (!paths.empty())
-        {
-
-            paths.clear();
-
-
-        }
+       paths.clear();
         latestPath = null;
         invalidate();
     }
 
     public void undo()
     {
-        if (!paths.empty())
-        {
-            latestPath = paths.pop();
 
 
-        }
-       else  latestPath=null;
+        if (currentIndex>0)  --currentIndex;
+
         invalidate();
     }
 
     public void redo() {
-        if (latestPath != null) {
-            paths.push(latestPath);
-            latestPath = null;
-            invalidate();
-
-        }
+        if (currentIndex< paths.size()) ++currentIndex;
+        invalidate();
 
     }
-
     public void captureAndSend() {
 
         try {
 
-            getDrawingCache().compress(Bitmap.CompressFormat.JPEG, 100, new FileOutputStream(new File(Environment.getExternalStorageDirectory(),"screencap.jpg")));
+
+
+            getDrawingCache().compress(Bitmap.CompressFormat.JPEG, 100, new FileOutputStream(new File(Environment.getExternalStorageDirectory(),"/screencap.jpg")));
 
         } catch (Exception e) {
             Log.e("Error--------->", e.toString());

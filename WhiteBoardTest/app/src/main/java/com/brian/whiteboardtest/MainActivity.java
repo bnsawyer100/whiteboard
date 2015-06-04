@@ -1,11 +1,16 @@
 package com.brian.whiteboardtest;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+
+import java.io.File;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -52,7 +57,23 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View arg0) {
 
                 whiteBoardCurrent.captureAndSend();
-              
+                Intent sendpicIntent = new Intent(android.content.Intent.ACTION_SEND);
+                sendpicIntent.setType("image/jpeg");
+                String aEmailList[] = { "bnsawyer@aol.com" };
+                sendpicIntent.putExtra(android.content.Intent.EXTRA_EMAIL, aEmailList);
+
+                sendpicIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,
+                        "Look--a pic!");
+                sendpicIntent.putExtra(android.content.Intent.EXTRA_TEXT,
+                        "attached here");
+
+                File sdCard = Environment.getExternalStorageDirectory();
+                String PATH=sdCard.toString()+"/screencap.jpg";
+
+                  sendpicIntent.putExtra(Intent.EXTRA_STREAM,Uri.parse("file://"+PATH));
+               // File(Environment.getDataDirectory(), "screencap.jpg")
+               //  sendpicIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://"+ "screencap.jpg"));
+                startActivity(Intent.createChooser(sendpicIntent, "Send mail..."));
 
             }
         });
@@ -73,7 +94,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View arg0) {
 //black, dark gray, light gray, blue, red, green, orange, yellow
-                whiteBoardCurrent.setPenColor(0x000000);
+                whiteBoardCurrent.setPenColor(0xFF000000);
 
             }
         });
@@ -82,7 +103,7 @@ public class MainActivity extends ActionBarActivity {
         color2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                whiteBoardCurrent.setPenColor(0x333333);
+                whiteBoardCurrent.setPenColor(0xFF333333);
 
             }
         });
@@ -90,7 +111,7 @@ public class MainActivity extends ActionBarActivity {
         color3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                whiteBoardCurrent.setPenColor(0x666666);
+                whiteBoardCurrent.setPenColor(0xFF666666);
 
             }
         });
@@ -98,7 +119,7 @@ public class MainActivity extends ActionBarActivity {
         color4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                whiteBoardCurrent.setPenColor(0x0000FF);
+                whiteBoardCurrent.setPenColor(0xFF0000FF);
 
             }
         });
@@ -106,7 +127,7 @@ public class MainActivity extends ActionBarActivity {
         color5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                whiteBoardCurrent.setPenColor(0xFF0000);
+                whiteBoardCurrent.setPenColor(0xFFFF0000);
 
             }
         });
@@ -114,7 +135,7 @@ public class MainActivity extends ActionBarActivity {
         color6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                whiteBoardCurrent.setPenColor(0x00FF00);
+                whiteBoardCurrent.setPenColor(0xFF00FF00);
 
             }
         });
@@ -122,7 +143,7 @@ public class MainActivity extends ActionBarActivity {
         color7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                whiteBoardCurrent.setPenColor(0xDDAA00);
+                whiteBoardCurrent.setPenColor(0xFFDDAA00);
 
             }
         });
@@ -130,7 +151,7 @@ public class MainActivity extends ActionBarActivity {
         color8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                whiteBoardCurrent.setPenColor(0xFFFF00);
+                whiteBoardCurrent.setPenColor(0xFFFFFF00);
 
             }
         });

@@ -56,52 +56,52 @@
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="44dp"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/color1"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
                     android:background="#000000" />
 
                 <Button
                     android:id="@+id/color2"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
                     android:background="#333333" />
 
                 <Button
                     android:id="@+id/color3"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
                     android:background="#666666" />
 
             </LinearLayout>
 
 
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="44dp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/color4"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
                     android:background="#0000FF" />
 
                 <Button
                     android:id="@+id/color5"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
                     android:background="#FF0000" />
 
                 <Button
                     android:id="@+id/color6"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
                     android:background="#00FF00" />
 
             </LinearLayout>
@@ -110,25 +110,25 @@
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="44dp"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/color7"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
                     android:background="#DDAA00" />
 
                 <Button
                     android:id="@+id/color8"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
                     android:background="#FFFF00" />
 
                 <Button
                     android:id="@+id/color9"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
                     android:background="#FFFFFF" />
 
             </LinearLayout>
