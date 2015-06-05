@@ -20,7 +20,7 @@ public class WhiteBoardView extends View implements View.OnTouchListener {
 
     private Pathpart latestPath = null;
     private ArrayList<Pathpart> paths = new ArrayList<Pathpart>();
-    private Paint currentPaint = new Paint();
+    private Paint currentPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private boolean penDown = false;
     private int currentIndex = 0;
 
@@ -48,9 +48,12 @@ public class WhiteBoardView extends View implements View.OnTouchListener {
 
     @Override
     public void onDraw(Canvas canvas) {
+        int max = currentIndex;
+
 
         if (paths.size()>0)
-             for (int i=0; i<currentIndex;++i) {
+             for (int i=0; i<max;++i) {
+
                 canvas.drawPath(paths.get(i).thepath, paths.get(i).thepaint);
             }
 
@@ -127,6 +130,8 @@ public class WhiteBoardView extends View implements View.OnTouchListener {
         invalidate();
 
     }
+
+
     public void captureAndSend() {
 
         try {
@@ -139,4 +144,7 @@ public class WhiteBoardView extends View implements View.OnTouchListener {
             Log.e("Error--------->", e.toString());
         }
     }
+
+
+
 }

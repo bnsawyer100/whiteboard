@@ -2,6 +2,7 @@ package com.brian.whiteboardtest;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.ActionBarActivity;
@@ -71,9 +72,7 @@ public class MainActivity extends ActionBarActivity {
                 String PATH=sdCard.toString()+"/screencap.jpg";
 
                   sendpicIntent.putExtra(Intent.EXTRA_STREAM,Uri.parse("file://"+PATH));
-               // File(Environment.getDataDirectory(), "screencap.jpg")
-               //  sendpicIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://"+ "screencap.jpg"));
-                startActivity(Intent.createChooser(sendpicIntent, "Send mail..."));
+               startActivity(Intent.createChooser(sendpicIntent, "Send mail..."));
 
             }
         });
@@ -88,12 +87,22 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        Button button5 = (Button) findViewById(R.id.button5);
+        button5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+
+
+            }
+        });
+
+
+
 
         Button color1 = (Button) findViewById(R.id.color1);
         color1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-//black, dark gray, light gray, blue, red, green, orange, yellow
                 whiteBoardCurrent.setPenColor(0xFF000000);
 
             }
@@ -188,5 +197,34 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+
+    private class WhiteBoardBackground extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... params) {
+              try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    Thread.interrupted();
+                }
+
+            return "Executed";
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+        }
+
+        @Override
+        protected void onPreExecute() {}
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            whiteBoardCurrent.invalidate();
+
+        }
     }
 }
